@@ -23,6 +23,9 @@ import com.liferay.portal.kernel.security.permission.PermissionThreadLocal;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.Validator;
 
+import java.util.Map;
+
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -34,6 +37,11 @@ import org.osgi.service.component.annotations.Reference;
 	service = LayoutDisplayPageProvider.class
 )
 public class CustomJournalArticleLayoutDisplayPageProvider implements LayoutDisplayPageProvider<JournalArticle> {
+	
+	@Activate
+    protected void activate(Map<String, Object> properties) throws Exception {		
+		if (_log.isInfoEnabled()) _log.info("Activate...");		
+	}	
 
 	@Override
 	public String getClassName() {
@@ -156,7 +164,7 @@ public class CustomJournalArticleLayoutDisplayPageProvider implements LayoutDisp
 		PermissionChecker permissionChecker =
 			PermissionThreadLocal.getPermissionChecker();
 		
-		_log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		_log.info("_isShow");
 		
 //		if ((article == null) || article.isExpired() || article.isInTrash() ||
 //			(article.isPending() && (permissionChecker != null) &&
