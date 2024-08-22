@@ -25,9 +25,6 @@ import com.liferay.portal.kernel.exception.PortalException;
 
 import java.util.Locale;
 
-/**
- * @author Jürgen Kappler
- */
 public class CustomJournalArticleLayoutDisplayPageObjectProvider
 	implements LayoutDisplayPageObjectProvider<JournalArticle> {
 
