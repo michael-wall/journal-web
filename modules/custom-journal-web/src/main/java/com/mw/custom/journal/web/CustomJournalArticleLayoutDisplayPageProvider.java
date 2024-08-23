@@ -58,6 +58,12 @@ public class CustomJournalArticleLayoutDisplayPageProvider implements LayoutDisp
 
 		JournalArticle article = journalArticleLocalService.fetchLatestArticle(
 			classPKInfoItemIdentifier.getClassPK());
+		
+		if (classPKInfoItemIdentifier.getVersion() != null) {
+			article = journalArticleLocalService.fetchArticle(
+				article.getGroupId(), article.getArticleId(),
+				Double.valueOf(classPKInfoItemIdentifier.getVersion()));
+		}		
 
 		if (!_isShow(article)) {
 			return null;
